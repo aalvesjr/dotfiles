@@ -1,0 +1,27 @@
+[user]
+  email = aalves.job@gmail.com
+  name = Armando
+[color "diff"]
+  commit = yellow
+  frag = cyan reverse
+  meta = black
+  new = green
+  old = red
+  plain = black
+  whitespace = normal red
+[alias]
+  b = branch
+  ca = commit --amend
+  ci = commit
+  co = checkout
+  dw = diff --word-diff
+  fl = log -p
+  lg = log --oneline --decorate
+  sb = status -sb
+  sh = !git-sh
+  st = status
+  who = shortlog -s --
+[core]
+  editor = vim
+[help]
+  autocorrect = 1

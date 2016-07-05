@@ -1,0 +1,25 @@
+Pry.config.editor = ENV['EDITOR'] || "vim"
+
+Pry.config.prompt = proc do |obj, level, _|
+  prompt = ""
+  prompt << "\e[1;30m"                             # color gray defined
+  prompt << "#{Rails.version}" if defined?(Rails)  # show rails version if exist
+  prompt << "#{RUBY_VERSION}"                      # show ruby version
+  "#{prompt} (#{obj})>\e[0m "                      # update the prompt and return to normal color
+end
+
+# red color to exceptions
+Pry.config.exception_handler = proc do |output,exception, _ |
+  output.puts "\e[31m#{exception.class}: #{exception.message}"
+  output.puts "from #{exception.backtrace.first}\e[0m"
+end
+
+begin
+  require "awesome_print"
+  Pry.config.print = proc do |output, value|
+    Pry::Helpers::BaseHelpers.stagger_output("=> #{value.ai}", output)
+  end
+rescue LoadError => err
+  puts "=> Unable to load awesome_print"
+end
+

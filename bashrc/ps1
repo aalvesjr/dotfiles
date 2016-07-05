@@ -1,0 +1,8 @@
+# enable use of __git_ps1
+# source $(locate git-prompt.sh)
+source /usr/share/git-core/contrib/completion/git-prompt.sh
+
+# show branch of git in green
+# exemple: [user] /path (master)
+export PS1='[\u] \W\[\033[0;32m\] $(__git_ps1 "(%s)")\[\033[0;00m\]\$ '
+

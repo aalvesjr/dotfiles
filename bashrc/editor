@@ -1,0 +1,3 @@
+# Editor default vim, used by GIT and TMUXINATOR
+export EDITOR='vim'
+
