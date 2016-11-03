@@ -25,7 +25,15 @@ if [[ $? -eq 0 ]]; then
 
   for file in $(ls .dotfiles/bashrc);
   do
-    cat ~/.dotfiles/bashrc/${file} >> ~/.bashrc
+    if [ -f .ignore ]
+    then
+      if ! [[ $(cat .ignore) =~ $file ]]
+      then
+        cat ~/.dotfiles/bashrc/${file} >> ~/.bashrc
+      fi
+    else
+      cat ~/.dotfiles/bashrc/${file} >> ~/.bashrc
+    fi
   done
 
   echo "Configuring bash_profile..."
