@@ -2,6 +2,23 @@
 
 DOTFILES_URL='https://github.com/aalvesjr/dotfiles.git'
 
+NC="\033[0m"
+GREEN="\033[0;32m"
+RED="\033[0;31m"
+
+STATUS_OK="\033[100G[ ${GREEN}OK${NC} ]"
+STATUS_FAIL="\033[100G[ ${RED}FALHOU${NC} ]"
+
+check () {
+  if [ $? -eq 0 ]; then
+    echo -e "$STATUS_OK"
+  else
+    echo -e "$STATUS_FAIL"
+    echo "Script Aborted!"
+    exit 1
+  fi
+}
+
 echo "Cloning dotfiles from: ${DOTFILES_URL}"
 git clone ${DOTFILES_URL} ~/.dotfiles
 
